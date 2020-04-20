@@ -1,0 +1,115 @@
+body {
+  background-color: rgb(19, 16, 16);
+}
+
+.row{
+  position: realtive;
+  width: 100%;
+  align-items: center;
+  color: white;
+  /*padding-top:20px;*/
+}
+
+
+.PisteLaskuri{
+  color: white;
+  font-size: 20px;
+}
+.Kello{
+  color: white;
+}
+
+.container{
+  text-align: center;
+  position: fixed;
+  right: 0px;
+  left: 0px;
+  width: 100%;
+  height: 60px;
+  -webkit-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+}
+
+.punainen {
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: red;
+  padding: 25px;
+  margin: 5px;
+}
+
+.keltainen {
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: yellow;
+  padding: 25px;
+  margin: 5px;
+}
+
+.vihrea {
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: green;
+  padding: 25px;
+  margin: 5px;
+}
+
+.ruskea {
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: brown;
+  padding: 25px;
+  margin: 5px;
+}
+
+.sininen {
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: blue;
+  padding: 25px;
+  margin: 5px;
+}
+
+.pinkki {
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: Pink;
+  padding: 25px;
+  margin: 5px;
+}
+
+.musta {
+  color:white;
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: black;
+  padding: 25px;
+  margin: 5px;
+}
+
+#demo{
+  scrollbar-color: black;
+}
+#demo p {
+  margin: 0;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: gray; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(12, 10, 10); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+.panel-body{
+  align-items: center;
+  margin-top: 50px;
+}
