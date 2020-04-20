@@ -167,7 +167,8 @@ export default class App extends React.Component {
       if (this.state.pelaaja === 1) {
         this.setState({ p1_break_piste: this.state.p1_break_piste + 1 })
         this.setState({ p1_frame_piste: this.state.p1_frame_piste + 1 })
-        this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27/*34*/) })
+        //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27/*34*/) })
+        this.maxPisteet(1);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti punaisen. ");
         if(this.state.punaisia === 0 ){
           $('.pelaaja1 > .punainen').prop('disabled', true);
@@ -178,7 +179,8 @@ export default class App extends React.Component {
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 1 })
         this.setState({ p2_frame_piste: this.state.p2_frame_piste + 1 })
-        this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27 /*34*/) })
+        //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27 /*34*/) })
+        this.maxPisteet(1);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti punaisen. ");
         if(this.state.punaisia === 0 ){
           $('.pelaaja1 > .punainen').prop('disabled', true);
@@ -204,7 +206,8 @@ export default class App extends React.Component {
       if (this.state.pelaaja === 1) {
         this.setState({ p1_break_piste: this.state.p1_break_piste + 2 })
         this.setState({ p1_frame_piste: this.state.p1_frame_piste + 2 })
-        this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 25) })
+        //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 25) })
+        this.maxPisteet(2);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti keltaisen. ");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
 
@@ -212,7 +215,8 @@ export default class App extends React.Component {
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 2 })
         this.setState({ p2_frame_piste: this.state.p2_frame_piste + 2 })
-        this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 25) })
+        //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 25) })
+        this.maxPisteet(2);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti keltaisen. ");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -228,7 +232,8 @@ export default class App extends React.Component {
         if (this.state.pelaaja === 1) {
           this.setState({ p1_break_piste: this.state.p1_break_piste + 2 })
           this.setState({ p1_frame_piste: this.state.p1_frame_piste + 2 })
-          this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27 ) })
+          //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27 ) })
+          this.maxPisteet(2);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti keltaisen. ");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
 
@@ -236,7 +241,8 @@ export default class App extends React.Component {
         else {
           this.setState({ p2_break_piste: this.state.p2_break_piste + 2 })
           this.setState({ p2_frame_piste: this.state.p2_frame_piste + 2 })
-          this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          this.maxPisteet(2);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti keltaisen. ");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -259,14 +265,16 @@ export default class App extends React.Component {
       if (this.state.pelaaja === 1) {
         this.setState({ p1_break_piste: this.state.p1_break_piste + 3 })
         this.setState({ p1_frame_piste: this.state.p1_frame_piste + 3 })
-        this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 22) })
+        //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 22) })
+        this.maxPisteet(3);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti vihreän. ");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
       }
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 3 })
         this.setState({ p2_frame_piste: this.state.p2_frame_piste + 3 })
-        this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 22) })
+        //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 22) })
+        this.maxPisteet(3);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti vihreän.");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -282,14 +290,16 @@ export default class App extends React.Component {
         if (this.state.pelaaja === 1) {
           this.setState({ p1_break_piste: this.state.p1_break_piste + 3 })
           this.setState({ p1_frame_piste: this.state.p1_frame_piste + 3 })
-          this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27) })
+          //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27) })
+          this.maxPisteet(3);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti vihreän.");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
         }
         else {
           this.setState({ p2_break_piste: this.state.p2_break_piste + 3 })
           this.setState({ p2_frame_piste: this.state.p2_frame_piste + 3 })
-          this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          this.maxPisteet(3);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti vihreän.");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -311,7 +321,8 @@ export default class App extends React.Component {
       if (this.state.pelaaja === 1) {
         this.setState({ p1_break_piste: this.state.p1_break_piste + 4 })
         this.setState({ p1_frame_piste: this.state.p1_frame_piste + 4 })
-        this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 18) })
+        //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 18) })
+        this.maxPisteet(4);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti ruskean.");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
 
@@ -319,7 +330,8 @@ export default class App extends React.Component {
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 4 })
         this.setState({ p2_frame_piste: this.state.p2_frame_piste + 4 })
-        this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 18) })
+        //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 18) })
+        this.maxPisteet(4);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti ruskean.");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -335,7 +347,8 @@ export default class App extends React.Component {
         if (this.state.pelaaja === 1) {
           this.setState({ p1_break_piste: this.state.p1_break_piste + 4 })
           this.setState({ p1_frame_piste: this.state.p1_frame_piste + 4 })
-          this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27) })
+          //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27) })
+          this.maxPisteet(4);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti ruskean.");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
 
@@ -343,7 +356,8 @@ export default class App extends React.Component {
         else {
           this.setState({ p2_break_piste: this.state.p2_break_piste + 4 })
           this.setState({ p2_frame_piste: this.state.p2_frame_piste + 4 })
-          this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          this.maxPisteet(4);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti ruskean.");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -365,7 +379,8 @@ export default class App extends React.Component {
       if (this.state.pelaaja === 1) {
         this.setState({ p1_break_piste: this.state.p1_break_piste + 5 })
         this.setState({ p1_frame_piste: this.state.p1_frame_piste + 5 })
-        this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 13) })
+        //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 13) })
+        this.maxPisteet(5);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti sinisen.");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
 
@@ -373,7 +388,8 @@ export default class App extends React.Component {
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 5 })
         this.setState({ p2_frame_piste: this.state.p2_frame_piste + 5 })
-        this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 13) })
+        //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 13) })
+        this.maxPisteet(5);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti sinisen.");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -389,7 +405,8 @@ export default class App extends React.Component {
         if (this.state.pelaaja === 1) {
           this.setState({ p1_break_piste: this.state.p1_break_piste + 5 })
           this.setState({ p1_frame_piste: this.state.p1_frame_piste + 5 })
-          this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27) })
+          //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27) })
+          this.maxPisteet(5);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti sinisen.");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
 
@@ -397,7 +414,8 @@ export default class App extends React.Component {
         else {
           this.setState({ p2_break_piste: this.state.p2_break_piste + 5 })
           this.setState({ p2_frame_piste: this.state.p2_frame_piste + 5 })
-          this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          this.maxPisteet(5);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti sinisen.");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -419,14 +437,16 @@ export default class App extends React.Component {
       if (this.state.pelaaja === 1) {
         this.setState({ p1_break_piste: this.state.p1_break_piste + 6 })
         this.setState({ p1_frame_piste: this.state.p1_frame_piste + 6 })
-        this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 7) })
+        //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 7) })
+        this.maxPisteet(6);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti vaaleanpunaisen.");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
       }
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 6 })
         this.setState({ p2_frame_piste: this.state.p2_frame_piste + 6 })
-        this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 7) })
+        //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 7) })
+        this.maxPisteet(6);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti vaaleanpunaisen.");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -443,7 +463,8 @@ export default class App extends React.Component {
         if (this.state.pelaaja === 1) {
           this.setState({ p1_break_piste: this.state.p1_break_piste + 6 })
           this.setState({ p1_frame_piste: this.state.p1_frame_piste + 6 })
-          this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27) })
+          //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27) })
+          this.maxPisteet(6);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti vaaleanpunaisen.");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
 
@@ -451,7 +472,8 @@ export default class App extends React.Component {
         else {
           this.setState({ p2_break_piste: this.state.p2_break_piste + 6 })
           this.setState({ p2_frame_piste: this.state.p2_frame_piste + 6 })
-          this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27) })
+          this.maxPisteet(6);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti vaaleanpunaisen.");
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -473,7 +495,8 @@ export default class App extends React.Component {
       if (this.state.pelaaja === 1) {
         this.setState({ p1_break_piste: this.state.p1_break_piste + 7 })
         this.setState({ p1_frame_piste: this.state.p1_frame_piste + 7 })
-        this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 0) })
+        //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 0) })
+        this.maxPisteet(7);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti mustan.");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
 
@@ -482,7 +505,8 @@ export default class App extends React.Component {
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 7 })
         this.setState({ p2_frame_piste: this.state.p2_frame_piste + 7 })
-        this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 0) })
+        //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 0) })
+        this.maxPisteet(7);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti mustan");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
@@ -497,7 +521,8 @@ export default class App extends React.Component {
         if (this.state.pelaaja === 1) {
           this.setState({ p1_break_piste: this.state.p1_break_piste + 7 })
           this.setState({ p1_frame_piste: this.state.p1_frame_piste + 7 })
-          this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 34/*27 */) })
+          //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 34/*27 */) })
+          this.maxPisteet(7);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti mustan.");
 
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
@@ -506,7 +531,8 @@ export default class App extends React.Component {
         else {
           this.setState({ p2_break_piste: this.state.p2_break_piste + 7 })
           this.setState({ p2_frame_piste: this.state.p2_frame_piste + 7 })
-          this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 34/*27*/) })
+          //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 34/*27*/) })
+          this.maxPisteet(7);
           this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti mustan.");
 
           //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
@@ -772,6 +798,24 @@ export default class App extends React.Component {
     }
   }
 
+  maxPisteet(piste){
+    if(piste === 1){
+      //this.setState({ max_piste: this.state.max_piste - piste});
+      this.setState({ p1_max_piste: this.state.p1_max_piste - piste })
+      this.setState({ p2_max_piste: this.state.p2_max_piste - piste })
+    }
+    else if(piste > 1 && this.state.punaisia === 0 && this.state.lippu === 0){
+      //this.setState({ max_piste: this.state.max_piste - 8});
+      this.setState({ p1_max_piste: this.state.p1_max_piste - piste })
+      this.setState({ p2_max_piste: this.state.p2_max_piste - piste })
+    }
+    else {
+      //this.setState({ max_piste: this.state.max_piste - piste});
+      this.setState({ p1_max_piste: this.state.p1_max_piste - 7 })
+      this.setState({ p2_max_piste: this.state.p2_max_piste - 7 })
+    }
+  }
+
   render() {
     return (
       
@@ -852,6 +896,32 @@ export default class App extends React.Component {
           <div id="punaisiaJaljella" className="col-4">{"Punaisia jäljellä: " + this.state.punaisia}</div>
           <div id="" className="col-4"></div>
         </div>
+        <div className="row">
+        <div className="col">
+          <div className="field">
+            Pisteiden muokkaus:
+          </div>
+        </div>
+        <div className="col"></div>
+        <div className="col">
+          <div className="field">
+            Pisteiden muokkaus:
+          </div>
+        </div>
+        </div>
+        <div className="row">
+        <div className="col">
+          <div className="field">
+            <input type="number" value={this.state.p1_frame_piste} onChange={event => this.setState({p1_frame_piste: event.target.valueAsNumber || event.target.value.replace(/\D/,'')})}/>
+          </div>
+        </div>
+        <div className="col"></div>
+        <div className="col">
+          <div className="field">
+            <input type="number" value={this.state.p2_frame_piste} onChange={event => this.setState({p2_frame_piste: event.target.valueAsNumber || event.target.value.replace(/\D/,'')})}/>
+          </div>
+        </div>
+      </div>
         <div className="row">
           <div className="panel panel-default">
             <div className="panel-body">
