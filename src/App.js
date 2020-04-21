@@ -167,7 +167,8 @@ export default class App extends React.Component {
       if (this.state.pelaaja === 1) {
         this.setState({ p1_break_piste: this.state.p1_break_piste + 1 })
         this.setState({ p1_frame_piste: this.state.p1_frame_piste + 1 })
-        this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27/*34*/) })
+        //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27/*34*/) })
+        this.maxPisteet(1);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti punaisen. ");
         if(this.state.punaisia === 0 ){
           $('.pelaaja1 > .punainen').prop('disabled', true);
@@ -178,7 +179,8 @@ export default class App extends React.Component {
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 1 })
         this.setState({ p2_frame_piste: this.state.p2_frame_piste + 1 })
-        this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27 /*34*/) })
+        //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27 /*34*/) })
+        this.maxPisteet(1);
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti punaisen. ");
         if(this.state.punaisia === 0 ){
           $('.pelaaja1 > .punainen').prop('disabled', true);
@@ -187,16 +189,16 @@ export default class App extends React.Component {
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
       }
-      this.setState({ lippu: 1 })
+      this.setState({ lippu: 1 })      
       if(this.state.punaisia === 1){
         $('.pelaaja1 > .punainen').prop('disabled', true);
         $('.pelaaja2 > .punainen').prop('disabled', true);
       }
     } else {
       this.setState({ punaisia: this.state.punaisia - 1 })
-      //this.Virhe(4);
-    }
+      //this.Virhe(4);    
   }
+}
 
   Kelt() {
     if(this.state.punaisia === 0 ){
@@ -502,7 +504,14 @@ export default class App extends React.Component {
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti mustan.");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p1_max_piste;
 
-        alert(Boolean(this.state.p1_frame_piste > this.state.p2_frame_piste) ? "Kaikki pallot pussitettu! Pelaaja 1 voitti. Aloita uusi peli" : "Kaikki pallot pussitettu! Pelaaja 2 voitti. Aloita uusi peli");
+        if (this.state.p1_frame_piste+7 === this.state.p2_frame_piste){
+          this.UusintaMusta();
+        }
+          
+        
+        else  {
+          alert(Boolean(this.state.p1_frame_piste > this.state.p2_frame_piste) ? "Kaikki pallot pussitettu! Pelaaja 1 voitti. Aloita uusi peli" : "Kaikki pallot pussitettu! Pelaaja 2 voitti. Aloita uusi peli");
+        }
       }
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 7 })
@@ -512,7 +521,14 @@ export default class App extends React.Component {
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti mustan");
         //document.getElementById("maxScore").innerHTML = "Aktiivisen pelaajan mahdollinen maksimipistemäärä: " + this.state.p2_max_piste;
 
-        alert(Boolean(this.state.p1_frame_piste > this.state.p2_frame_piste) ? "Kaikki pallot pussitettu! Pelaaja 1 voitti. Aloita uusi peli" : "Kaikki pallot pussitettu! Pelaaja 2 voitti. Aloita uusi peli");
+        if (this.state.p1_frame_piste === this.state.p2_frame_piste+7){
+          this.UusintaMusta();
+        }
+          
+        
+        else  {
+          alert(Boolean(this.state.p1_frame_piste > this.state.p2_frame_piste) ? "Kaikki pallot pussitettu! Pelaaja 1 voitti. Aloita uusi peli" : "Kaikki pallot pussitettu! Pelaaja 2 voitti. Aloita uusi peli");
+        }
       }
       for (var i = 0; i < this.state.elems.length; i++) {
         this.state.elems[i].disabled = true;
@@ -817,22 +833,43 @@ export default class App extends React.Component {
       this.setState({ p2_max_piste: this.state.p2_max_piste - 7 })
     }
   }
-    //Punaisten säätäminen
-    changeSelectedName = e => {
-      if(e.target.value > 15){
-        this.setState ({punaisia: 15})
+  //Punaisten säätäminen
+  changeSelectedName = e => {
+    if(e.target.value > 15){
+      this.setState ({punaisia: 15})
+    }
+    else if (e.target.value <= 0){
+      $('.pelaaja1 > .punainen').prop('disabled', true);
+      $('.pelaaja2 > .punainen').prop('disabled', true);
+      this.setState({punaisia: 0})
+    }
+    else{
+      $('.pelaaja1 > .punainen').prop('disabled', false);
+      $('.pelaaja2 > .punainen').prop('disabled', false);
+      this.setState({punaisia: e.target.value})
+    }
+  };
+
+  UusintaMusta() {
+    if(
+      this.p1_break_piste === this.p2_break_piste &&
+      document.getElementById("PPallo").disabled &&
+      document.getElementById("Kelt").disabled &&
+      document.getElementById("Vihr").disabled &&
+      document.getElementById("Rusk").disabled &&
+      document.getElementById("Sini").disabled &&
+      document.getElementById("Vaal").disabled
+      
+      ) {
+        alert("Pelataan uusimusta")
+        this.setState({ musta: 1 })
       }
-      else if (e.target.value <= 0){
-        $('.pelaaja1 > .punainen').prop('disabled', true);
-        $('.pelaaja2 > .punainen').prop('disabled', true);
-        this.setState({punaisia: 0})
+      else {
+        alert(Boolean(this.state.p1_frame_piste > this.state.p2_frame_piste) ? "Kaikki pallot pussitettu! Pelaaja 1 voitti. Aloita uusi peli" : "Kaikki pallot pussitettu! Pelaaja 2 voitti. Aloita uusi peli");
       }
-      else{
-        $('.pelaaja1 > .punainen').prop('disabled', false);
-        $('.pelaaja2 > .punainen').prop('disabled', false);
-        this.setState({punaisia: e.target.value})
-      }
-    };
+  } 
+
+    
 
   render() {
     return (
@@ -906,15 +943,15 @@ export default class App extends React.Component {
           <div className="col-4"><Ajastin /></div>
           <div className="col-2"><button onClick={this.vuoronVaihto.bind(this)}>Vuoronvaihto</button></div>
           <div className="col-2"><button onClick={this.Luovutus.bind(this)}>Luovutus</button></div>
-          
-          </div>
+          <div className="col-4"><Ajastin /></div>
+        </div>
         <div className="row">
-          <div className="col-4"></div>
+        <div className="col-4"></div>
           <div id="" className="col-4">
             <p>Aseta punaiset:</p>
             <input type="number" value={(this.props.punaisia)} onChange={this.changeSelectedName} min="0" max="15" step="1" /></div>
           <div id="punaisiaJaljella" className="col-2">{"Punaisia jäljellä: " + this.state.punaisia}</div>
-        </div>
+          </div>
         <div className="row">
         <div className="col">
           <div className="field">
