@@ -881,7 +881,7 @@ export default class App extends React.Component {
   render() {
     return (
       
-      <div className="container"><h1>Hallintapaneeli</h1>
+      <div className="container"><h1>Snooker hallintapaneeli</h1>
         <div className="row">
           <div className="col-4">
             Pelaaja1: {this.state.p1_nimi}
