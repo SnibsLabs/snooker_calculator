@@ -901,8 +901,8 @@ export default class App extends React.Component {
             Vaal={this.Vaal.bind(this)}
             Must={this.Must.bind(this)} />
           </div>
-          <div className="col-2 PisteLaskuri">Max: {this.state.p1_max_piste}<br></br>Break: {this.state.p1_break_piste}<br></br>Frame:{this.state.p1_frame_piste} <div>Piste-ero: {this.pisteEro()}</div></div>
-          <div className="col-2 PisteLaskuri">Max: {this.state.p2_max_piste}<br></br>Break: {this.state.p2_break_piste}<br></br>Frame: {this.state.p2_frame_piste}<div></div> </div>
+          <div className="col-2 PisteLaskuri">Max: {this.state.p1_max_piste}<br></br>Break: {this.state.p1_break_piste}<br></br>Frame:{this.state.p1_frame_piste} </div>
+          <div className="col-2 PisteLaskuri">Max: {this.state.p2_max_piste}<br></br>Break: {this.state.p2_break_piste}<br></br>Frame: {this.state.p2_frame_piste}</div>
           <div className="col-4"><PallotVieras
             PPallo={this.PPallo.bind(this)}
             Kelt={this.Kelt.bind(this)}
@@ -913,6 +913,7 @@ export default class App extends React.Component {
             Must={this.Must.bind(this)} />
           </div>
         </div>
+
 
         <div className="row">
           <div className="col-4">
@@ -929,6 +930,8 @@ export default class App extends React.Component {
                 </div>
             </div>
           </div>
+          
+
           <div className="col-4"><button onClick={this.Alustus.bind(this)}>Uusi peli</button></div>
             <div className="col-4">
             <div className="pelaaja2 dropdown">
@@ -950,7 +953,7 @@ export default class App extends React.Component {
           <div className="col-4"><Ajastin /></div>
           <div className="col-2"><button onClick={this.vuoronVaihto.bind(this)}>Vuoronvaihto</button></div>
           <div className="col-2"><button onClick={this.Luovutus.bind(this)}>Luovutus</button></div>
-          
+          <div className="col-4">Piste-ero: {this.pisteEro()}</div>
         </div>
         <div className="row">
         <div className="col-4"></div>
