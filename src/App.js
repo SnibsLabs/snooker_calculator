@@ -869,6 +869,13 @@ export default class App extends React.Component {
       }
   } 
 
+  pisteEro() {
+    if (this.state.p1_frame_piste > this.state.p2_frame_piste) {
+      return this.state.p1_frame_piste - this.state.p2_frame_piste
+    } else {
+      return this.state.p2_frame_piste - this.state.p1_frame_piste}
+  }
+
     
 
   render() {
@@ -894,8 +901,8 @@ export default class App extends React.Component {
             Vaal={this.Vaal.bind(this)}
             Must={this.Must.bind(this)} />
           </div>
-          <div className="col-2 PisteLaskuri">Max: {this.state.p1_max_piste}<br></br>Break: {this.state.p1_break_piste}<br></br>Frame:{this.state.p1_frame_piste} ({this.state.p1_frame_piste - this.state.p2_frame_piste})</div>
-          <div className="col-2 PisteLaskuri">Max: {this.state.p2_max_piste}<br></br>Break: {this.state.p2_break_piste}<br></br>Frame: {this.state.p2_frame_piste} ({this.state.p2_frame_piste - this.state.p1_frame_piste})</div>
+          <div className="col-2 PisteLaskuri">Max: {this.state.p1_max_piste}<br></br>Break: {this.state.p1_break_piste}<br></br>Frame:{this.state.p1_frame_piste} <div>Piste-ero: {this.pisteEro()}</div></div>
+          <div className="col-2 PisteLaskuri">Max: {this.state.p2_max_piste}<br></br>Break: {this.state.p2_break_piste}<br></br>Frame: {this.state.p2_frame_piste} </div>
           <div className="col-4"><PallotVieras
             PPallo={this.PPallo.bind(this)}
             Kelt={this.Kelt.bind(this)}
