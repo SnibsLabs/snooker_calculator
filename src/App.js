@@ -38,7 +38,7 @@ export default class App extends React.Component {
     console.log("Vuoronvaihto")
     if (this.state.pelaaja === 1) {
       this.setState({nykyisen_pelaaja_nimi: this.state.p2_nimi});
-      $(".pelaaja2").css("background-color", "#262626");
+      $(".pelaaja2").css("background-color", "#666666");
       $(".pelaaja1").css("background-color", "");
       $('.pelaaja2 > .button').prop('disabled', false);
       $('.pelaaja1 > .button').prop('disabled', true);
@@ -73,7 +73,7 @@ export default class App extends React.Component {
       //this.writeToDemo("Pelaajan " + this.state.pelaaja + " vuoro");
     } else {
       this.setState({nykyisen_pelaaja_nimi: this.state.p1_nimi});
-      $(".pelaaja1").css("background-color", "#262626");
+      $(".pelaaja1").css("background-color", "#666666");
       $(".pelaaja2").css("background-color", "");
       $('.pelaaja1 > .button').prop('disabled', false);
       $('.pelaaja2 > .button').prop('disabled', true);
@@ -148,7 +148,7 @@ export default class App extends React.Component {
     //document.getElementById("punaisiaJaljella").innerHTML = "punaisia jäljellä: " + this.state.punaisia;
     $('.pelaaja1 > .button').prop('disabled', false);
     $('.pelaaja2 > .button').prop('disabled', true);
-    $(".pelaaja1").css("background-color", "#262626");
+    $(".pelaaja1").css("background-color", "#666666");
     $(".pelaaja2").css("background-color", "");
     document.getElementById("demo").setAttribute("style","overflow:auto;height:200px;width:1110px");
     console.log("Alustettu / Uusi peli ")
@@ -156,7 +156,7 @@ export default class App extends React.Component {
 
   PPallo() { // Punaisen pallon pisteytys
     
-    if (this.state.lippu === 0) { // Jos kaikki punaiset pussitettu, disabloidaan painike
+    if (this.state.lippu === 0 || this.state.lippu === 1) { // Jos kaikki punaiset pussitettu, disabloidaan painike
       if (this.state.punaisia === 0) {
         document.getElementById("PPallo").disabled = true;
       }
@@ -167,8 +167,7 @@ export default class App extends React.Component {
       if (this.state.pelaaja === 1) {
         this.setState({ p1_break_piste: this.state.p1_break_piste + 1 })
         this.setState({ p1_frame_piste: this.state.p1_frame_piste + 1 })
-        //this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27/*34*/) })
-        this.maxPisteet(1);
+        this.setState({ p1_max_piste: this.state.p1_frame_piste + (8 * this.state.punaisia + 27/*34*/) })
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti punaisen. ");
         if(this.state.punaisia === 0 ){
           $('.pelaaja1 > .punainen').prop('disabled', true);
@@ -179,8 +178,7 @@ export default class App extends React.Component {
       else {
         this.setState({ p2_break_piste: this.state.p2_break_piste + 1 })
         this.setState({ p2_frame_piste: this.state.p2_frame_piste + 1 })
-        //this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27 /*34*/) })
-        this.maxPisteet(1);
+        this.setState({ p2_max_piste: this.state.p2_frame_piste + (8 * this.state.punaisia + 27 /*34*/) })
         this.writeToDemo("Pelaaja " + this.state.nykyisen_pelaaja_nimi + " pussitti punaisen. ");
         if(this.state.punaisia === 0 ){
           $('.pelaaja1 > .punainen').prop('disabled', true);
@@ -190,10 +188,14 @@ export default class App extends React.Component {
 
       }
       this.setState({ lippu: 1 })
+      if(this.state.punaisia === 1){
+        $('.pelaaja1 > .punainen').prop('disabled', true);
+        $('.pelaaja2 > .punainen').prop('disabled', true);
+      }
     } else {
-      this.Virhe(4);
+      this.setState({ punaisia: this.state.punaisia - 1 })
+      //this.Virhe(4);
     }
-
   }
 
   Kelt() {
@@ -563,12 +565,12 @@ export default class App extends React.Component {
     if(this.state.pelaaja === 1){
       //console.log("vuoronvaihto")
       this.setState({nykyisen_pelaaja_nimi: this.state.p2_nimi});
-      $(".pelaaja2").css("background-color", "#262626");
+      $(".pelaaja2").css("background-color", "#666666");
       $(".pelaaja1").css("background-color", "");
     }
     else{
       this.setState({nykyisen_pelaaja_nimi: this.state.p1_nimi});
-      $(".pelaaja1").css("background-color", "#262626");
+      $(".pelaaja1").css("background-color", "#666666");
       $(".pelaaja2").css("background-color", "");
     }
     if (this.state.pelaaja === 1) {
@@ -648,11 +650,11 @@ export default class App extends React.Component {
   Vapaapallo(virhepiste, vapaapallo) {
     if(this.state.pelaaja === 1){
       //console.log("vuoronvaihto")
-      $(".pelaaja2").css("background-color", "#262626");
+      $(".pelaaja2").css("background-color", "#666666");
       $(".pelaaja1").css("background-color", "");
     }
     else{
-      $(".pelaaja1").css("background-color", "#262626");
+      $(".pelaaja1").css("background-color", "#666666");
       $(".pelaaja2").css("background-color", "");
     }
     if (this.state.pelaaja === 1) {
@@ -815,6 +817,22 @@ export default class App extends React.Component {
       this.setState({ p2_max_piste: this.state.p2_max_piste - 7 })
     }
   }
+    //Punaisten säätäminen
+    changeSelectedName = e => {
+      if(e.target.value > 15){
+        this.setState ({punaisia: 15})
+      }
+      else if (e.target.value <= 0){
+        $('.pelaaja1 > .punainen').prop('disabled', true);
+        $('.pelaaja2 > .punainen').prop('disabled', true);
+        this.setState({punaisia: 0})
+      }
+      else{
+        $('.pelaaja1 > .punainen').prop('disabled', false);
+        $('.pelaaja2 > .punainen').prop('disabled', false);
+        this.setState({punaisia: e.target.value})
+      }
+    };
 
   render() {
     return (
@@ -889,12 +907,13 @@ export default class App extends React.Component {
           <div className="col-2"><button onClick={this.vuoronVaihto.bind(this)}>Vuoronvaihto</button></div>
           <div className="col-2"><button onClick={this.Luovutus.bind(this)}>Luovutus</button></div>
           
-        </div>
+          </div>
         <div className="row">
-          <div id="" className="col-4"></div>
-          <input type="number" value={(this.state.punaisia)} min="0" max="15" step="1"/>
-          <div id="punaisiaJaljella" className="col-4">{"Punaisia jäljellä: " + this.state.punaisia}</div>
-          <div id="" className="col-4"></div>
+          <div className="col-4"></div>
+          <div id="" className="col-4">
+            <p>Aseta punaiset:</p>
+            <input type="number" value={(this.props.punaisia)} onChange={this.changeSelectedName} min="0" max="15" step="1" /></div>
+          <div id="punaisiaJaljella" className="col-2">{"Punaisia jäljellä: " + this.state.punaisia}</div>
         </div>
         <div className="row">
         <div className="col">
