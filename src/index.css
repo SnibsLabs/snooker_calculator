@@ -113,3 +113,27 @@ body {
   align-items: center;
   margin-top: 50px;
 }
+.field input[type="number"], textarea {    
+  background-color :rgb(117, 115, 121);
+  border:0px;
+  color: white;
+  border-radius: 2px;
+  width: 140px;    
+}
+.rangeslider-horizontal .rangeslider__fill {
+  background-color: #1e74e5;
+}
+.peruutusButton {
+  position: absolute;
+  right: 30px;
+}
+.peruutusButton {
+  position: absolute;
+  bottom: 4px;
+  left: 8px;
+}
+.syötäButton {
+  position: absolute;
+  bottom: 4px;
+  left: 370px;
+}
