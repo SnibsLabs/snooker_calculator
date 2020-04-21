@@ -943,7 +943,7 @@ export default class App extends React.Component {
           <div className="col-4"><Ajastin /></div>
           <div className="col-2"><button onClick={this.vuoronVaihto.bind(this)}>Vuoronvaihto</button></div>
           <div className="col-2"><button onClick={this.Luovutus.bind(this)}>Luovutus</button></div>
-          <div className="col-4"><Ajastin /></div>
+          
         </div>
         <div className="row">
         <div className="col-4"></div>
